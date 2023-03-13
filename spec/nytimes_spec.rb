@@ -24,7 +24,8 @@ class Nytimes
     it 'can get array of stories' do 
       # require 'pry'; binding.pry
       #Using @hash, define a variable called `result` that returns the array of stories
-      result = @hash[:results]
+      # result = @hash[:results]
+      result = @hash.dig(:results)
       expect(result).to be_an_instance_of(Array)
       expect(result.count).to eq(44)
     end
@@ -32,7 +33,7 @@ class Nytimes
     it 'can get all stories with subsection of politics' do 
       #Using @hash, define a variable called `result` that returns all stories with subsection of politics.
       
-      all_stories = @hash[:results]
+      all_stories = @hash.dig(:results)
 
       result = all_stories.find_all do |hash| 
         hash[:subsection] == "Politics"
